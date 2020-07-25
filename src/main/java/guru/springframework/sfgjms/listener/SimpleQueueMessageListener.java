@@ -11,13 +11,13 @@ import org.springframework.stereotype.Component;
 import javax.jms.Message;
 
 @Component
-public class HelloMessageListener {
+public class SimpleQueueMessageListener {
 
-    @JmsListener(destination = JmsConfig.QUEUE_NAME)
+    @JmsListener(destination = JmsConfig.SIMPLE_QUEUE_NAME)
     public void listen(@Payload HelloWorldMessage helloWorldMessage,
                        @Headers MessageHeaders messageHeaders,
                        Message message) {
 
-        System.out.println("Message is received: " + helloWorldMessage);
+        System.out.println("SimpleQueueMessageListener:  is received: " + helloWorldMessage);
     }
 }

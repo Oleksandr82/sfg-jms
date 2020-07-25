@@ -17,15 +17,15 @@ public class HelloSender {
 
     @Scheduled(fixedRate = 2000)
     public void sendMessage() {
-        System.out.println("Sending a message...");
+        System.out.println("HelloSender: Sending a message...");
 
         HelloWorldMessage message = HelloWorldMessage.builder()
                 .uuid(UUID.randomUUID())
                 .message("Hello world!")
                 .build();
 
-        jmsTemplate.convertAndSend(JmsConfig.QUEUE_NAME, message);
+        jmsTemplate.convertAndSend(JmsConfig.SIMPLE_QUEUE_NAME, message);
 
-        System.out.println("Message is sent!");
+        System.out.println("HelloSender: Message is sent!");
     }
 }
